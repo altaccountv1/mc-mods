@@ -51,11 +51,12 @@ closeButton.TextSize = 15
 local openButton = Instance.new("TextButton")
 local corner = Instance.new("UICorner", openButton)
 openButton.Size = UDim2.new(0, 100, 0, 20)
-openButton.Position = UDim2.new(0.5, -50, 0.5, -100)
+openButton.Position = UDim2.new(0.95, -50, 0.5, -100)
 openButton.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
 openButton.Text = "Open GUI"
 openButton.BackgroundTransparency = 0.5
 openButton.Parent = gui
+
 
 local TextBox = Instance.new("TextBox")
 TextBox.Size = UDim2.new(0, 150, 0, 30)
