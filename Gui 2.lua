@@ -21,6 +21,9 @@ local function Notify(text) -- Notification
 end
 
 rplaysound = (function(a1) -- rplaysound
+if not S_ReplicatedStorage_2.Sounds:FindFirstChild(a1) then
+    return Notify("Sound not found!")	
+end
 u10.playsound(S_ReplicatedStorage_2.Sounds[a1], u9.hrp, nil, nil, true)
 u5:FireServer({"repsound", a1})
 end)
@@ -69,6 +72,7 @@ TextBox.Parent = ScrFrame
 local Gap = 10
 
 local Button = Instance.new("TextButton")
+local corner = Instance.new("UICorner", Button)
 Button.BackgroundColor3 = Color3.fromRGB(255,255,255)
 Button.Size = UDim2.new(0, 70, 0, 30)
 Button.Position = UDim2.new(0, TextBox.Position.X.Offset + TextBox.Size.X.Offset + 10, 0, TextBox.Position.Y.Offset)
