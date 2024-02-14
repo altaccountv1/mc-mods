@@ -70,7 +70,7 @@ textbox.Position = UDim2.new(0.024, 0, 0.07, 0)
 textbox.Size = UDim2.new(0, 513, 0, 187)
 textbox.Position = UDim2.new(0.024, 0, 0.07, 0)
 
-open.Activated:Connect(function()
+textbutton.Activated:Connect(function()
     open.Visible = false
     main.Visible = true
 end)
