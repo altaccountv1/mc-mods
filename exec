@@ -1,0 +1,66 @@
+local gui = Instance.new("ScreenGui", game.Players.LocalPlayer.PlayerGui)
+
+local main = Instance.new("Frame", gui)
+main.BackgroundColor3 = Color3.fromRGB(44, 44, 44)
+main.BackgroundTransparency = 0.25
+main.Position = UDim2.new(0.234, 0,0.206, 0)
+main.Size = UDim2.new(0, 574,0, 291)
+
+local open = Instance.new("Frame", gui)
+local corner = Instance.new("UICorner", open)
+corner.CornerRadius = UDim(0,200)
+local textbutton = Instance.new("TextButton", open)
+local corner2 = corner:Clone() corner2.Parent = textbutton
+textbutton.BackgroundColor3 = Color3.fromRGB(84, 255, 141)
+local stroke = Instance.new("UIStroke", open) stroke.Color = Color3.fromRGB(39, 39, 39)
+	
+local corner = Instance.new("UICorner", main)
+local border = Instance.new("UIStroke", main)
+border.Thickness = 3
+
+local buttons = Instance.new("Frame", main)
+
+local execute = Instance.new("TextButton", buttons)
+local corner = Instance.new("UICorner", execute)
+execute.Position = UDim2.new(0, 0,0.158, 0)
+execute.BackgroundColor3 = Color3.fromRGB(21, 185, 255)
+execute.BackgroundTransparency = 0
+execute.Modal = true
+execute.FontFace = Enum.Font.RobotoMono
+execute.Text = "Execute"
+execute.Size = UDim2.new(0, 175,0, 25)
+
+local clear = Instance.new("TextButton", buttons)
+local corner = Instance.new("UICorner", clear)
+clear.Position = UDim2.new(0.351, 0,0.158, 0)
+clear.BackgroundColor3 = Color3.fromRGB(29, 255, 101)
+clear.Modal = true
+clear.Font = Enum.Font.RobotoMono
+clear.Text = "Clear"
+clear.Size = execute.Size
+
+local close = Instance.new("TextButton", buttons)
+local corner = Instance.new("UICorner", close)
+close.Position = UDim2.new(0.696, 0,0.158, 0)
+close.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+close.Size = UDim2.new(0, 164,0, 25)
+close.Font = Enum.Font.RobotoMono
+close.Text = "Close"
+
+local textframe = Instance.new("Frame", main)
+local corner = Instance.new("UICorner", textframe)
+textframe.BackgroundTransparency = 0.5
+textframe.BackgroundColor3 = Color3.fromRGB(0,0,0)
+textframe.Position = UDim2.new(0.03, 0,0.086, 0)
+textframe.Size = UDim2.new(0, 539,0, 216)
+
+local textbox = Instance.new("TextBox", textframe)
+textbox.BackgroundTransparency = 1
+textbox.ClearTextOnFocus = false
+textbox.Position = UDim2.new(0.024, 0,0.07, 0)
+textbox.Size = UDim2.new(0, 513,0, 187)
+textbox.Position = UDim2.new(0.024, 0,0.07, 0)
+
+execute.Activated:Connect(function()
+	loadstring(textbox.Text)()
+end)
