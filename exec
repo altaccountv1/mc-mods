@@ -8,7 +8,7 @@ main.Size = UDim2.new(0, 574,0, 291)
 
 local open = Instance.new("Frame", gui)
 local corner = Instance.new("UICorner", open)
-corner.CornerRadius = UDim(0,200)
+corner.CornerRadius = UDim.new(0,200)
 local textbutton = Instance.new("TextButton", open)
 local corner2 = corner:Clone() corner2.Parent = textbutton
 textbutton.BackgroundColor3 = Color3.fromRGB(84, 255, 141)
