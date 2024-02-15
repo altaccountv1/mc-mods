@@ -17,7 +17,7 @@ textbutton.BackgroundColor3 = Color3.fromRGB(84, 255, 141)
 local stroke = Instance.new("UIStroke", open)
 stroke.Color = Color3.fromRGB(39, 39, 39)
 textbutton.Text = "Open"
-textbutton.Size = UDim2.new(0, 100, 0, 50)
+textbutton.Size = UDim2.new(0, 50, 0, 50)
 
 local corner = Instance.new("UICorner", main)
 local border = Instance.new("UIStroke", main)
