@@ -28,7 +28,7 @@ local Converted = {
 	["_X"] = Instance.new("TextButton");
 	["_UICorner9"] = Instance.new("UICorner");
 	["_UICorner10"] = Instance.new("UICorner");
-	["_Open"] = Instance.new("TextLabel");
+	["_Open"] = Instance.new("TextButton");
 	["_UICorner11"] = Instance.new("UICorner");
 	["_UIStroke"] = Instance.new("UIStroke");
 }
