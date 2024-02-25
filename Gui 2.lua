@@ -1,6 +1,256 @@
--- Create the GUI
-local gui = Instance.new("ScreenGui")
-gui.Parent = game.Players.LocalPlayer.PlayerGui
+local Converted = {
+	["_ScreenGui"] = Instance.new("ScreenGui");
+	["_Frame"] = Instance.new("Frame");
+	["_ScrollingFrame"] = Instance.new("ScrollingFrame");
+	["_Buttons"] = Instance.new("Folder");
+	["_Sound"] = Instance.new("Folder");
+	["_SoundTxt"] = Instance.new("TextBox");
+	["_UICorner"] = Instance.new("UICorner");
+	["_Play"] = Instance.new("TextButton");
+	["_UICorner1"] = Instance.new("UICorner");
+	["_Reload"] = Instance.new("Folder");
+	["_Reload1"] = Instance.new("TextButton");
+	["_UICorner2"] = Instance.new("UICorner");
+	["_Change"] = Instance.new("Folder");
+	["_Change1"] = Instance.new("TextButton");
+	["_UICorner3"] = Instance.new("UICorner");
+	["_Type"] = Instance.new("TextBox");
+	["_UICorner4"] = Instance.new("UICorner");
+	["_Style"] = Instance.new("TextBox");
+	["_UICorner5"] = Instance.new("UICorner");
+	["_Value"] = Instance.new("TextBox");
+	["_UICorner6"] = Instance.new("UICorner");
+	["_Heat"] = Instance.new("Folder");
+	["_InfHeat"] = Instance.new("TextButton");
+	["_UICorner7"] = Instance.new("UICorner");
+	["_Credits"] = Instance.new("TextLabel");
+	["_UICorner8"] = Instance.new("UICorner");
+	["_X"] = Instance.new("TextButton");
+	["_UICorner9"] = Instance.new("UICorner");
+	["_UICorner10"] = Instance.new("UICorner");
+	["_Open"] = Instance.new("TextLabel");
+	["_UICorner11"] = Instance.new("UICorner");
+	["_UIStroke"] = Instance.new("UIStroke");
+}
+
+-- Properties:
+
+Converted["_ScreenGui"].ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+Converted["_ScreenGui"].Parent = game:GetService("CoreGui")
+
+Converted["_Frame"].AnchorPoint = Vector2.new(0.5, 0.5)
+Converted["_Frame"].BackgroundColor3 = Color3.fromRGB(42.000001296401024, 42.000001296401024, 42.000001296401024)
+Converted["_Frame"].BackgroundTransparency = 0.25
+Converted["_Frame"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Frame"].BorderSizePixel = 0
+Converted["_Frame"].Position = UDim2.new(0.5, 0, 0.5, 0)
+Converted["_Frame"].Size = UDim2.new(0, 500, 0, 250)
+Converted["_Frame"].Parent = Converted["_ScreenGui"]
+
+Converted["_ScrollingFrame"].ScrollBarImageColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_ScrollingFrame"].ScrollBarThickness = 10
+Converted["_ScrollingFrame"].Active = true
+Converted["_ScrollingFrame"].AnchorPoint = Vector2.new(0.5, 0.5)
+Converted["_ScrollingFrame"].BackgroundColor3 = Color3.fromRGB(42.000001296401024, 42.000001296401024, 42.000001296401024)
+Converted["_ScrollingFrame"].BackgroundTransparency = 0.25
+Converted["_ScrollingFrame"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_ScrollingFrame"].BorderSizePixel = 0
+Converted["_ScrollingFrame"].Position = UDim2.new(0.5, 0, 0.515999973, 0)
+Converted["_ScrollingFrame"].Size = UDim2.new(0, 450, 0, 200)
+Converted["_ScrollingFrame"].Parent = Converted["_Frame"]
+
+Converted["_Buttons"].Name = "Buttons"
+Converted["_Buttons"].Parent = Converted["_ScrollingFrame"]
+
+Converted["_Sound"].Name = "Sound"
+Converted["_Sound"].Parent = Converted["_Buttons"]
+
+Converted["_SoundTxt"].CursorPosition = -1
+Converted["_SoundTxt"].Font = Enum.Font.Cartoon
+Converted["_SoundTxt"].PlaceholderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_SoundTxt"].PlaceholderText = "Enter sound"
+Converted["_SoundTxt"].Text = ""
+Converted["_SoundTxt"].TextColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_SoundTxt"].TextSize = 14
+Converted["_SoundTxt"].AnchorPoint = Vector2.new(0.5, 0.5)
+Converted["_SoundTxt"].BackgroundColor3 = Color3.fromRGB(75.00000312924385, 147.00000643730164, 255)
+Converted["_SoundTxt"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_SoundTxt"].BorderSizePixel = 0
+Converted["_SoundTxt"].Position = UDim2.new(0.342777789, 0, 0.0612500012, 0)
+Converted["_SoundTxt"].Size = UDim2.new(0, 285, 0, 38)
+Converted["_SoundTxt"].Name = "SoundTxt"
+Converted["_SoundTxt"].Parent = Converted["_Sound"]
+
+Converted["_UICorner"].Parent = Converted["_SoundTxt"]
+
+Converted["_Play"].Font = Enum.Font.Cartoon
+Converted["_Play"].Text = "Play"
+Converted["_Play"].TextColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Play"].TextSize = 14
+Converted["_Play"].AnchorPoint = Vector2.new(0.5, 0.5)
+Converted["_Play"].BackgroundColor3 = Color3.fromRGB(75.00000312924385, 138.00000697374344, 255)
+Converted["_Play"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Play"].BorderSizePixel = 0
+Converted["_Play"].Position = UDim2.new(0.798777819, 0, 0.0599999987, 0)
+Converted["_Play"].Size = UDim2.new(0, 89, 0, 38)
+Converted["_Play"].Name = "Play"
+Converted["_Play"].Parent = Converted["_Sound"]
+
+Converted["_UICorner1"].Parent = Converted["_Play"]
+
+Converted["_Reload"].Name = "Reload"
+Converted["_Reload"].Parent = Converted["_Buttons"]
+
+Converted["_Reload1"].Font = Enum.Font.Cartoon
+Converted["_Reload1"].Text = "Reload Character"
+Converted["_Reload1"].TextColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Reload1"].TextSize = 14
+Converted["_Reload1"].AnchorPoint = Vector2.new(0.5, 0.5)
+Converted["_Reload1"].BackgroundColor3 = Color3.fromRGB(170.0000050663948, 255, 255)
+Converted["_Reload1"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Reload1"].BorderSizePixel = 0
+Converted["_Reload1"].Position = UDim2.new(0.186666667, 0, 0.321298838, 0)
+Converted["_Reload1"].Size = UDim2.new(0, 126, 0, 50)
+Converted["_Reload1"].Name = "Reload"
+Converted["_Reload1"].Parent = Converted["_Reload"]
+
+Converted["_UICorner2"].Parent = Converted["_Reload1"]
+
+Converted["_Change"].Name = "Change"
+Converted["_Change"].Parent = Converted["_Buttons"]
+
+Converted["_Change1"].Font = Enum.Font.Cartoon
+Converted["_Change1"].Text = "Change Value"
+Converted["_Change1"].TextColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Change1"].TextSize = 14
+Converted["_Change1"].BackgroundColor3 = Color3.fromRGB(6.0000005923211575, 197.00001865625381, 117.00000822544098)
+Converted["_Change1"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Change1"].BorderSizePixel = 0
+Converted["_Change1"].Position = UDim2.new(0.0466666669, 0, 0.119999997, 0)
+Converted["_Change1"].Size = UDim2.new(0, 126, 0, 50)
+Converted["_Change1"].Name = "Change"
+Converted["_Change1"].Parent = Converted["_Change"]
+
+Converted["_UICorner3"].Parent = Converted["_Change1"]
+
+Converted["_Type"].CursorPosition = -1
+Converted["_Type"].Font = Enum.Font.Cartoon
+Converted["_Type"].PlaceholderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Type"].PlaceholderText = "Type"
+Converted["_Type"].Text = ""
+Converted["_Type"].TextColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Type"].TextSize = 14
+Converted["_Type"].BackgroundColor3 = Color3.fromRGB(140.00000685453415, 140.00000685453415, 140.00000685453415)
+Converted["_Type"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Type"].BorderSizePixel = 0
+Converted["_Type"].Position = UDim2.new(1.15873015, 0, 0.600000024, 0)
+Converted["_Type"].Size = UDim2.new(0, 116, 0, 19)
+Converted["_Type"].Name = "Type"
+Converted["_Type"].Parent = Converted["_Change1"]
+
+Converted["_UICorner4"].Parent = Converted["_Type"]
+
+Converted["_Style"].CursorPosition = -1
+Converted["_Style"].Font = Enum.Font.Cartoon
+Converted["_Style"].PlaceholderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Style"].PlaceholderText = "Style"
+Converted["_Style"].Text = ""
+Converted["_Style"].TextColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Style"].TextSize = 14
+Converted["_Style"].BackgroundColor3 = Color3.fromRGB(140.00000685453415, 140.00000685453415, 140.00000685453415)
+Converted["_Style"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Style"].BorderSizePixel = 0
+Converted["_Style"].Position = UDim2.new(1.15873015, 0, 0, 0)
+Converted["_Style"].Size = UDim2.new(0, 116, 0, 19)
+Converted["_Style"].Name = "Style"
+Converted["_Style"].Parent = Converted["_Change1"]
+
+Converted["_UICorner5"].Parent = Converted["_Style"]
+
+Converted["_Value"].CursorPosition = -1
+Converted["_Value"].Font = Enum.Font.Cartoon
+Converted["_Value"].PlaceholderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Value"].PlaceholderText = "Value"
+Converted["_Value"].Text = ""
+Converted["_Value"].TextColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Value"].TextSize = 14
+Converted["_Value"].BackgroundColor3 = Color3.fromRGB(76.0000030696392, 100.00000923871994, 206.000018119812)
+Converted["_Value"].BackgroundTransparency = 0.25
+Converted["_Value"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Value"].BorderSizePixel = 0
+Converted["_Value"].Position = UDim2.new(2.22222233, 0, 0, 0)
+Converted["_Value"].Size = UDim2.new(0, 116, 0, 50)
+Converted["_Value"].Name = "Value"
+Converted["_Value"].Parent = Converted["_Change1"]
+
+Converted["_UICorner6"].Parent = Converted["_Value"]
+
+Converted["_Heat"].Name = "Heat"
+Converted["_Heat"].Parent = Converted["_Buttons"]
+
+Converted["_InfHeat"].Font = Enum.Font.Cartoon
+Converted["_InfHeat"].Text = "Infinite Heat"
+Converted["_InfHeat"].TextColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_InfHeat"].TextSize = 14
+Converted["_InfHeat"].AnchorPoint = Vector2.new(0.5, 0.5)
+Converted["_InfHeat"].BackgroundColor3 = Color3.fromRGB(255, 85.0000025331974, 0)
+Converted["_InfHeat"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_InfHeat"].BorderSizePixel = 0
+Converted["_InfHeat"].Position = UDim2.new(0.48888889, 0, 0.322794199, 0)
+Converted["_InfHeat"].Size = UDim2.new(0, 126, 0, 50)
+Converted["_InfHeat"].Name = "InfHeat"
+Converted["_InfHeat"].Parent = Converted["_Heat"]
+
+Converted["_UICorner7"].Parent = Converted["_InfHeat"]
+
+Converted["_Credits"].Font = Enum.Font.Gotham
+Converted["_Credits"].Text = "Ducksy's Panel Ultimate"
+Converted["_Credits"].TextColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Credits"].TextSize = 20
+Converted["_Credits"].BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Converted["_Credits"].BackgroundTransparency = 1
+Converted["_Credits"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Credits"].BorderSizePixel = 0
+Converted["_Credits"].Position = UDim2.new(0.0500000007, 0, 0, 0)
+Converted["_Credits"].Size = UDim2.new(0, 450, 0, 25)
+Converted["_Credits"].Name = "Credits"
+Converted["_Credits"].Parent = Converted["_Frame"]
+
+Converted["_UICorner8"].Parent = Converted["_Credits"]
+
+Converted["_X"].Font = Enum.Font.Cartoon
+Converted["_X"].Text = "X"
+Converted["_X"].TextColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_X"].TextSize = 20
+Converted["_X"].BackgroundColor3 = Color3.fromRGB(255, 43.00000123679638, 6.0000005923211575)
+Converted["_X"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_X"].BorderSizePixel = 0
+Converted["_X"].Position = UDim2.new(0.941999972, 0, 0, 0)
+Converted["_X"].Size = UDim2.new(0, 29, 0, 29)
+Converted["_X"].Name = "X"
+Converted["_X"].Parent = Converted["_Frame"]
+
+Converted["_UICorner9"].Parent = Converted["_X"]
+
+Converted["_UICorner10"].Parent = Converted["_Frame"]
+
+Converted["_Open"].Font = Enum.Font.Cartoon
+Converted["_Open"].Text = "Open"
+Converted["_Open"].TextColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Open"].TextSize = 14
+Converted["_Open"].BackgroundColor3 = Color3.fromRGB(23.000000528991222, 184.00000423192978, 112.0000085234642)
+Converted["_Open"].BorderColor3 = Color3.fromRGB(0, 0, 0)
+Converted["_Open"].BorderSizePixel = 0
+Converted["_Open"].Position = UDim2.new(0.884726822, 0, 0.467741936, 0)
+Converted["_Open"].Size = UDim2.new(0, 98, 0, 31)
+Converted["_Open"].Name = "Open"
+Converted["_Open"].Parent = Converted["_ScreenGui"]
+
+Converted["_UICorner11"].Parent = Converted["_Open"]
+
+Converted["_UIStroke"].ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+Converted["_UIStroke"].Color = Color3.fromRGB(65.0000037252903, 65.0000037252903, 65.0000037252903)
+Converted["_UIStroke"].Parent = Converted["_Open"]
 
 local u1 = game.Players.LocalPlayer
 local S_UserInputService_1 = game:GetService("UserInputService")
@@ -15,9 +265,9 @@ local u12 = nil
 local plr = game:GetService("Players").LocalPlayer
 local pgui = plr.PlayerGui
 local interf = pgui.Interface
-
+local char = plr.Character
 local function Notify(text) -- Notification
-	game.Players.LocalPlayer.PlayerGui["Notify"]:Fire(text)
+    game.Players.LocalPlayer.PlayerGui["Notify"]:Fire(text)
 end
 
 rplaysound = (function(a1) -- rplaysound
@@ -28,68 +278,10 @@ u10.playsound(S_ReplicatedStorage_2.Sounds[a1], u9.hrp, nil, nil, true)
 u5:FireServer({"repsound", a1})
 end)
 
-local frame = Instance.new("Frame", gui)
-frame.Size = UDim2.new(0, 335, 0, 235)
-frame.Position = UDim2.new(0.5, -167.5, 0.5, -117.5)
-frame.BackgroundColor3 = Color3.new(0, 0, 0)
-frame.BackgroundTransparency = 0.5
-frame.Visible = false
-local ScrFrame = Instance.new("ScrollingFrame", frame)
-local corner = Instance.new("UICorner", frame)
-ScrFrame.Size = UDim2.new(0, 300, 0, 200)
-ScrFrame.Position = UDim2.new(0.5, -150, 0.5, -100)
-ScrFrame.BackgroundColor3 = Color3.new(0, 0, 0)
-ScrFrame.BackgroundTransparency = 0.5
-ScrFrame.Visible = false
-
-local closeButton = Instance.new("TextButton")
-closeButton.Size = UDim2.new(0, 20, 0, 20)
-closeButton.Position = UDim2.new(1, -35, 0, 5)
-closeButton.BackgroundColor3 = Color3.new(1, 0, 0)
-closeButton.Text = "X"
-closeButton.Parent = frame
-closeButton.Font = Enum.Font.SourceSansBold
-closeButton.TextSize = 15
-
-local openButton = Instance.new("TextButton")
-local corner = Instance.new("UICorner", openButton)
-openButton.Size = UDim2.new(0, 100, 0, 20)
-openButton.Position = UDim2.new(0.95, -50, 0.5, -100)
-openButton.BackgroundColor3 = Color3.fromRGB(0, 255, 0)
-openButton.Text = "Open GUI"
-openButton.BackgroundTransparency = 0.5
-openButton.Parent = gui
-
-
-local TextBox = Instance.new("TextBox")
-TextBox.Size = UDim2.new(0, 150, 0, 30)
-TextBox.Position = UDim2.new(0, 10, 0, 10)
-TextBox.BackgroundColor3 = Color3.fromRGB(255, 144, 10)
-TextBox.PlaceholderText = "Enter sound name"
-TextBox.Text = "Enter sound name"
-TextBox.Parent = ScrFrame
-
-local Gap = 10
-
-local Button = Instance.new("TextButton")
-local corner = Instance.new("UICorner", Button)
-Button.BackgroundColor3 = Color3.fromRGB(255,255,255)
-Button.Size = UDim2.new(0, 70, 0, 30)
-Button.Position = UDim2.new(0, TextBox.Position.X.Offset + TextBox.Size.X.Offset + 10, 0, TextBox.Position.Y.Offset)
-Button.Text = "Play Sound"
-Button.Parent = ScrFrame
-Button.Activated:Connect(function()
-    local soundName = TextBox.Text
+Converted["_Play"].Activated:Connect(function()
+    local soundName = converted["_SoundTxt"].Text
     rplaysound(soundName)
 end)
-
-    local button = Instance.new("TextButton")
-    local corner = Instance.new("UICorner", button)
-    button.Size = UDim2.new(0, 100, 0, 50)
-    button.Position = UDim2.new(0, 10, 0, Button.Position.Y.Offset + Button.Size.Y.Offset + Gap)
-    button.BackgroundColor3 = Color3.fromRGB(0, 153, 255)
-    button.Text = "Infinite Heat"
-    button.Parent = ScrFrame
 
     local Activated = false
     local FillHeatCoroutine
@@ -107,7 +299,7 @@ end)
         end
     end
 
-    button.Activated:Connect(function()
+    Converted["_InfHeat"].Activated:Connect(function()
         Activated = not Activated
         if Activated then
             FillHeatCoroutine = coroutine.create(FillHeat)
@@ -120,121 +312,49 @@ end)
         end
     end)
 
-local changeButton = Instance.new("TextButton")
-local corner = Instance.new("UICorner", changeButton)
-    changeButton.Size = UDim2.new(0, 100, 0, 50)
-    changeButton.Position = UDim2.new(0, 10, 0, button.Position.Y.Offset + button.Size.Y.Offset + Gap)
-    changeButton.BackgroundColor3 = Color3.fromRGB(0, 153, 255)
-    changeButton.Text = "Change Value"
-    changeButton.Parent = ScrFrame
-
-
-    local nameTextBox = Instance.new("TextBox")
-    nameTextBox.Size = UDim2.new(0, 100, 0, 20)
-    nameTextBox.Position = UDim2.new(0, 10, 0, changeButton.Position.Y.Offset + changeButton.Size.Y.Offset + 10)
-    nameTextBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    nameTextBox.PlaceholderText = "Enter StringValue"
-    nameTextBox.Parent = ScrFrame
-    nameTextBox.Text = "Enter StringValue"
-    local valueTextBox = Instance.new("TextBox")
-    valueTextBox.Size = UDim2.new(0, 100, 0, 20)
-    valueTextBox.Position = UDim2.new(0, 10, 0, nameTextBox.Position.Y.Offset + nameTextBox.Size.Y.Offset + 10)
-    valueTextBox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    valueTextBox.PlaceholderText = "Enter New Value"
-    valueTextBox.Text = "Enter New Value"
-    valueTextBox.Parent = ScrFrame
-
-    changeButton.Activated:Connect(function()
+Converted["_Change1"].Activated:Connect(function()
         local name = nameTextBox.Text
-        local value = valueTextBox.Text
+        local value = Converted["_Value"].Text
+	local type = Converted["_Type"].Text typel = string.lower(type)
+        local style = Converted["_Style"].Text
+        local Value = style:FindFirstChild(style)
 
-        local brawlerFolder = game.ReplicatedStorage.Styles.Brawler
-        local stringValue = brawlerFolder:FindFirstChild(name)
-
-        if stringValue and stringValue:IsA("StringValue") then
-            stringValue.Value = value
+        if Value then
+            if typel == "string" then
+		Value.Value = value
             Notify("Value changed successfully!")
+	    elseif type1 == "anim" then
+		Value.AnimationId = value
+               Notify("Animation changed successfully!")
+	    end
         else
-            Notify("StringValue not found.")
+            Notify("Value not found.")
         end
     end)
 
-    local changeButton = Instance.new("TextButton")
-    local corner = Instance.new("UICorner", changeButton)
-    changeButton.Size = UDim2.new(0, 100, 0, 50)
-    changeButton.Position = UDim2.new(0, 10, 0, valueTextBox.Position.Y.Offset + valueTextBox.Size.Y.Offset + Gap)
-    changeButton.BackgroundColor3 = Color3.fromRGB(0, 153, 255)
-    changeButton.Text = "Change Animation"
-    changeButton.Parent = ScrFrame
 
-
-    local animnametextbox = Instance.new("TextBox")
-    animnametextbox.Size = UDim2.new(0, 100, 0, 20)
-    animnametextbox.Position = UDim2.new(0, 10, 0, changeButton.Position.Y.Offset + changeButton.Size.Y.Offset + 10)
-    animnametextbox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    animnametextbox.PlaceholderText = "Enter Animation"
-    animnametextbox.Parent = ScrFrame
-    animnametextbox.Text = "Enter Animation"
-    local animidtextbox = Instance.new("TextBox")
-    animidtextbox.Size = UDim2.new(0, 100, 0, 20)
-    animidtextbox.Position = UDim2.new(0, 10, 0, animnametextbox.Position.Y.Offset + animnametextbox.Size.Y.Offset + 10)
-    animidtextbox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    animidtextbox.PlaceholderText = "Enter New Id"
-    animidtextbox.Text = "Enter New Id"
-    animidtextbox.Parent = ScrFrame
-
-    changeButton.Activated:Connect(function()
-        local name = animnametextbox.Text
-        local value = animidtextbox.Text
-
-        local brawlerFolder = game.ReplicatedStorage.Styles.Brawler
-        local anim = brawlerFolder:FindFirstChild(name)
-
-        if anim and anim:IsA("Animation") then
-            anim.AnimationId = value
-            Notify("Animation Changed successfully!")
-        else
-            Notify("Animation not found.")
-        end
-    end)
-
-local ReloadButton = Instance.new("TextButton")
-local corner = Instance.new("UICorner", ReloadButton)
-ReloadButton.Size = UDim2.new(0, 100, 0, 50)
-ReloadButton.Position = UDim2.new(0, 10, 0, animidtextbox.Position.Y.Offset + animidtextbox.Size.Y.Offset + Gap)
-ReloadButton.BackgroundColor3 = Color3.fromRGB(0, 153, 255)
-ReloadButton.Text = "Reload Character"
-ReloadButton.Parent = ScrFrame
-ReloadButton.Activated:Connect(function()
+Converted["_Reload1"].Activated:Connect(function()
+    local oldcframe = char.HumanoidRootPart.CFrame
     interf.Client.Disabled = true
     task.wait()
-    interf.Client.Disabled = false 
+    interf.Client.Disabled = false
+    task.wait(0.5)
+    char.HumanoidRootPart.CFrame = oldcframe
 end)
 
-local function addgenericButton(text, func)
-    local button = Instance.new("TextButton")
-    button.Size = UDim2.new(0, 100, 0, 50)
-    button.Position = UDim2.new(0, 10, 0, TextBox.Position.Y.Offset + TextBox.Size.Y.Offset + 10)
-    button.BackgroundColor3 = Color3.fromRGB(0, 153, 255)
-    button.Text = text
-    button.Parent = ScrFrame
-
-    button.Activated:Connect(func)
-end
 
 -- Function to open/close the GUI
 local function toggleGui()
-    ScrFrame.Visible = not ScrFrame.Visible
-    openButton.Visible = not openButton.Visible
-    frame.Visible = not frame.Visible
+    Converted["_Frame"].Visible = not Converted["_Frame"].Visible
+    Converted["_Open"].Visible = not Converted["_Open"].Visible
 end
 
 -- Event handler for close button activation
-closeButton.Activated:Connect(function()
+Converted["_X"].Activated:Connect(function()
     toggleGui()
 end)
 
 -- Event handler for open button activation
-openButton.Activated:Connect(function()
+Converted["_Open"].Activated:Connect(function()
     toggleGui()
 end)
