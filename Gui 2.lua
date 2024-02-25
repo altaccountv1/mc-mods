@@ -317,7 +317,7 @@ Converted["_Change1"].Activated:Connect(function()
     local name = Converted["_Type"].Text
     local style = Converted["_Style"].Text
     local parentObject = game.ReplicatedStorage.Styles[style]
-    local Value = parentObject:FindFirstChild(style)
+    local Value = parentObject:FindFirstChild(name)
 
     if Value then
         if Value:IsA("Animation") then
