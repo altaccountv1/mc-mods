@@ -313,23 +313,25 @@ end)
     end)
 
 Converted["_Change1"].Activated:Connect(function()
-        local value = Converted["_Value"].Text
-	local name = Converted["_Type"].Text
-        local style = Converted["_Style"].Text
-        local Value = style:FindFirstChild(name)
+    local value = Converted["_Value"].Text
+    local name = Converted["_Type"].Text
+    local style = Converted["_Style"].Text
+    local parentObject = game.ReplicatedStorage.Styles[style]
+    local Value = parentObject:FindFirstChild(style)
 
-        if Value then
-            if Value:IsA("Animation") then
-		Value.AnimationId = value
-	    Notify("Animation changed successfully")
-	    elseif Value:IsA("StringValue") then
-		Value.Value = value
-	    Notify("Value changed successfully")
-	    end
-        else
-            Notify("Value not found.")
+    if Value then
+        if Value:IsA("Animation") then
+            Value.AnimationId = value
+            Notify("Animation changed successfully")
+        elseif Value:IsA("StringValue") then
+            Value.Value = value
+            Notify("Value changed successfully")
         end
-    end)
+    else
+        Notify("Value not found.")
+    end
+end)
+
 
 
 Converted["_Reload1"].Activated:Connect(function()
@@ -337,7 +339,7 @@ Converted["_Reload1"].Activated:Connect(function()
     interf.Client.Disabled = true
     task.wait()
     interf.Client.Disabled = false
-    task.wait(0.5)
+    task.wait()
     char.HumanoidRootPart.CFrame = oldcframe
 end)
 
