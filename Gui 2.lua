@@ -136,7 +136,7 @@ Converted["_UICorner3"].Parent = Converted["_Change1"]
 Converted["_Type"].CursorPosition = -1
 Converted["_Type"].Font = Enum.Font.Cartoon
 Converted["_Type"].PlaceholderColor3 = Color3.fromRGB(0, 0, 0)
-Converted["_Type"].PlaceholderText = "Type"
+Converted["_Type"].PlaceholderText = "Name"
 Converted["_Type"].Text = ""
 Converted["_Type"].TextColor3 = Color3.fromRGB(0, 0, 0)
 Converted["_Type"].TextSize = 14
@@ -313,19 +313,18 @@ end)
     end)
 
 Converted["_Change1"].Activated:Connect(function()
-        local name = nameTextBox.Text
         local value = Converted["_Value"].Text
-	local type = Converted["_Type"].Text typel = string.lower(type)
+	local name = Converted["_Type"].Text
         local style = Converted["_Style"].Text
-        local Value = style:FindFirstChild(style)
+        local Value = style:FindFirstChild(name)
 
         if Value then
-            if typel == "string" then
-		Value.Value = value
-            Notify("Value changed successfully!")
-	    elseif type1 == "anim" then
+            if Value:IsA("Animation") then
 		Value.AnimationId = value
-               Notify("Animation changed successfully!")
+	    Notify("Animation changed successfully")
+	    elseif Value:IsA("StringValue") then
+		Value.Value = value
+	    Notify("Value changed successfully")
 	    end
         else
             Notify("Value not found.")
