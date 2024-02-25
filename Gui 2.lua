@@ -342,7 +342,8 @@ Converted["_Reload1"].Activated:Connect(function()
     char.HumanoidRootPart.CFrame = oldcframe
 end)
 
-
+Converted["_Frame"].Visible = false
+Converted["_Open"].Visible = true
 -- Function to open/close the GUI
 local function toggleGui()
     Converted["_Frame"].Visible = not Converted["_Frame"].Visible
