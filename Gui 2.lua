@@ -32,6 +32,7 @@ local Converted = {
     ["_UICorner10"] = Instance.new("UICorner");
     ["_Open"] = Instance.new("TextButton");
     ["_UICorner11"] = Instance.new("UICorner");
+    ["_UICorner12"] = Instance.new("UICorner");
     ["_UIStroke"] = Instance.new("UIStroke");
 }
 
@@ -250,6 +251,8 @@ Converted["_DragonToggle"].Position = UDim2.new(0.797777772, 0, 0.321985483, 0)
 Converted["_DragonToggle"].Size = UDim2.new(0, 126, 0, 50)
 Converted["_DragonToggle"].Name = "DragonToggle"
 Converted["_DragonToggle"].Parent = Converted["_Dragon"]
+
+Converted["UICorner12"].Parent = Converted["_DragonToggle"]
 
 Converted["_Open"].Font = Enum.Font.Cartoon
 Converted["_Open"].Text = "Open"
