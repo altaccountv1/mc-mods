@@ -252,7 +252,7 @@ Converted["_DragonToggle"].Size = UDim2.new(0, 126, 0, 50)
 Converted["_DragonToggle"].Name = "DragonToggle"
 Converted["_DragonToggle"].Parent = Converted["_Dragon"]
 
-Converted["UICorner12"].Parent = Converted["_DragonToggle"]
+Converted["_UICorner12"].Parent = Converted["_DragonToggle"]
 
 Converted["_Open"].Font = Enum.Font.Cartoon
 Converted["_Open"].Text = "Open"
