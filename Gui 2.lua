@@ -13,6 +13,7 @@ local Converted = {
     ["_DragonToggle"] = Instance.new("TextButton");
     ["_UICorner2"] = Instance.new("UICorner");
     ["_Change"] = Instance.new("Folder");
+    ["_Dragon"] = Instance.new("Folder");
     ["_Change1"] = Instance.new("TextButton");
     ["_UICorner3"] = Instance.new("UICorner");
     ["_Type"] = Instance.new("TextBox");
@@ -234,6 +235,8 @@ Converted["_X"].Parent = Converted["_Frame"]
 Converted["_UICorner9"].Parent = Converted["_X"]
 
 Converted["_UICorner10"].Parent = Converted["_Frame"]
+
+Converted["_Dragon"].Parent = Converted["_Buttons"]
 
 Converted["_DragonToggle"].Font = Enum.Font.Cartoon
 Converted["_DragonToggle"].Text = "Dragon Style"
