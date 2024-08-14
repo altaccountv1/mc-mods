@@ -182,8 +182,8 @@ local function showHighlight(char, val)
 		high = Instance.new("Highlight")
 		high.Name = "BlindHighlight"
 		high.Parent = char
-		--table.insert(allHighlights, high)
-		print("high made for " .. char.Name)
+		table.insert(allHighlights, high)
+		
 	elseif high and not val then
 		high:Destroy()
 		return
@@ -191,7 +191,7 @@ local function showHighlight(char, val)
 		return
 	end
 	
-	print(tostring(high.Enabled) .. " for " .. char.Name .. ", transparency - " .. tostring(high.OutlineTransparency)  .. "; r - " .. tostring(high.OutlineColor.R))
+	
 	high.Parent = char
 	high.OutlineTransparency = 0
 	high.DepthMode = Enum.HighlightDepthMode.AlwaysOnTop
