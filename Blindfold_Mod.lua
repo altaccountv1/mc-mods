@@ -328,30 +328,29 @@ game:GetService("RunService").RenderStepped:Connect(function()
 	updatePlayerHighlight(plr)
 	updateVision()
 	updatePropHighlights()
-	print(tostring(#allHighlights) .. " - num")
 	
-	--if frId >= 144 * 3 then
-	--	frId = 0
-	--	local oldHighlights = allHighlights
-	--	local newHighlights = {}
-	--coroutine.wrap(function()
-	--		for _,old in pairs(oldHighlights) do
-	--			if old.Name == "BlindHighlight" and canBeVisible(old.Parent) == false then
-	--				old:Destroy()
-	--				continue
-	--			end
-	--			local parent = old.adornee
-	--			local new = old:Clone()
-	--			old:Destroy()
+	if frId >= 144 * 3 then
+		frId = 0
+		local oldHighlights = allHighlights
+		local newHighlights = {}
+	coroutine.wrap(function()
+			for _,old in pairs(oldHighlights) do
+				if old.Name == "BlindHighlight" and canBeVisible(old.Parent) == false then
+					old:Destroy()
+					continue
+				end
+				local parent = old.adornee
+				local new = old:Clone()
+				old:Destroy()
 				
-	--			new.Parent = parent
-	--			new.Adornee = parent
-	--			table.insert(newHighlights, new)
-	--			game:GetService("RunService").RenderStepped:Wait()
-	--		end
-	--		allHighlights = newHighlights
-	--	end)()
-	--end
+				new.Parent = parent
+				new.Adornee = parent
+				table.insert(newHighlights, new)
+				game:GetService("RunService").RenderStepped:Wait()
+			end
+			allHighlights = newHighlights
+		end)()
+	end
 end)
 
 for _,z in pairs(ein.EnemyHP.BG.Meter:GetChildren()) do
