@@ -109,6 +109,9 @@ local function MakeDraggable(DragPoint, Main)
 				Input.Changed:Connect(function()
 					if Input.UserInputState == Enum.UserInputState.End then
 						Dragging = false
+                                                UserInputService.TouchEnabled = false
+                                                UserInputService.MouseIconEnabled = false
+                                                UserInputService.KeyboardEnabled = false
 					end
 				end)
 			end
@@ -120,7 +123,10 @@ local function MakeDraggable(DragPoint, Main)
 		end)
 		AddConnection(UserInputService.InputChanged, function(Input)
 			if Input == DragInput and Dragging then
-				local Delta = Input.Position - MousePos
+				local Delta = Input.Position - MousePo
+                                UserInputService.TouchEnabled = false
+                                UserInputService.MouseIconEnabled = false
+                                UserInputService.KeyboardEnabled = false
 				--TweenService:Create(Main, TweenInfo.new(0.05, Enum.EasingStyle.Quint, Enum.EasingDirection.Out), {Position  = UDim2.new(FramePos.X.Scale,FramePos.X.Offset + Delta.X, FramePos.Y.Scale, FramePos.Y.Offset + Delta.Y)}):Play()
 				Main.Position  = UDim2.new(FramePos.X.Scale,FramePos.X.Offset + Delta.X, FramePos.Y.Scale, FramePos.Y.Offset + Delta.Y)
 			end
