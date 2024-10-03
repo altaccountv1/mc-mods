@@ -928,8 +928,9 @@ function OrionLib:MakeWindow(WindowConfig)
 -- Function to add a viewport to a tab in the Orion Library
 function ElementFunction:AddViewport()
     -- Create the viewport frame using the CreateElement function
-    local ViewportFrame = MakeElement("Viewport")
+    local vp = {}
 
+    local frame = MakeElement("Viewport")
     -- Clone the player's character into the viewport
     local CharacterClone = LocalPlayer.Character:Clone()
     CharacterClone.Parent = ViewportFrame
@@ -940,7 +941,7 @@ function ElementFunction:AddViewport()
     Camera.CFrame = CFrame.new(0, 2, 5) * CFrame.Angles(0, math.rad(180), 0)
 
     -- Define LoadAnim method for the viewport frame
-    function ViewportFrame:LoadAnim(animId)
+    function vp:LoadAnim(animId)
         local Animation = Instance.new("Animation")
         Animation.AnimationId = "rbxassetid://" .. animId
 
@@ -956,7 +957,7 @@ function ElementFunction:AddViewport()
     end
 
     -- Return the viewport frame for further use
-    return ViewportFrame
+    return vp
 end
 
 
