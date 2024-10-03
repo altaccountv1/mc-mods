@@ -265,16 +265,15 @@ end)
 CreateElement("Viewport", function()
     -- Create the viewport frame
     local ViewportFrame = Create("ViewportFrame", {
-        Size = UDim2.new(0, 300, 0, 300), -- Size of the viewport
+        Size = UDim2.new(0, 300, 0, 300), -- Default size
         BackgroundTransparency = 1,
         AnchorPoint = Vector2.new(0.5, 0.5),
         Position = UDim2.new(0.5, 0, 0.5, 0), -- Center it
-        CurrentCamera = Instance.new("Camera") -- Create a new camera for the viewport
+        CurrentCamera = Instance.new("Camera") -- Create a camera for the viewport
     })
-
-    -- Return the viewport frame
     return ViewportFrame
 end)
+
 
 CreateElement("Stroke", function(Color, Thickness)
 	local Stroke = Create("UIStroke", {
@@ -925,19 +924,6 @@ function OrionLib:MakeWindow(WindowConfig)
 				return Button
 			end
                         -- Create the viewport element in OrionLib style
-CreateElement("Viewport", function()
-    -- Create the viewport frame
-    local ViewportFrame = Create("ViewportFrame", {
-        Size = UDim2.new(0, 300, 0, 300), -- Default size
-        BackgroundTransparency = 1,
-        AnchorPoint = Vector2.new(0.5, 0.5),
-        Position = UDim2.new(0.5, 0, 0.5, 0), -- Center it
-        CurrentCamera = Instance.new("Camera") -- Create a camera for the viewport
-    })
-
-    -- Return the viewport frame
-    return ViewportFrame
-end)
 
 -- Function to add a viewport to a tab in the Orion Library
 function ElementFunction:AddViewport()
@@ -953,7 +939,7 @@ function ElementFunction:AddViewport()
     local Camera = ViewportFrame.CurrentCamera
     Camera.CFrame = CFrame.new(0, 2, 5) * CFrame.Angles(0, math.rad(180), 0)
 
-    -- Function to load an animation onto the player's character in the viewport
+    -- Define LoadAnim method for the viewport frame
     function ViewportFrame:LoadAnim(animId)
         local Animation = Instance.new("Animation")
         Animation.AnimationId = "rbxassetid://" .. animId
