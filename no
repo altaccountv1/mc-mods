@@ -328,6 +328,38 @@ CreateElement("RoundFrame", function(Color, Scale, Offset)
 	return Frame
 end)
 
+local function CreateCharacterViewport()
+    -- Create a ViewportFrame
+    local ViewportFrame = Instance.new("ViewportFrame")
+    ViewportFrame.Size = UDim2.new(0, 300, 0, 300) -- Set desired size
+    ViewportFrame.BackgroundColor3 = Color3.fromRGB(32, 32, 32) -- Grey background
+    ViewportFrame.BorderSizePixel = 0
+    ViewportFrame.BackgroundTransparency = 0.1
+
+    -- Add rounded corners
+    local Corner = Instance.new("UICorner")
+    Corner.CornerRadius = UDim.new(0, 10)
+    Corner.Parent = ViewportFrame
+
+    -- Set up the camera for the viewport
+    local Camera = Instance.new("Camera")
+    ViewportFrame.CurrentCamera = Camera
+
+    -- Clone the player's character
+    local character = game.Players.LocalPlayer.Character or game.Players.LocalPlayer.CharacterAdded:Wait()
+    local clonedCharacter = character:Clone()
+
+    -- Position the camera to view the character
+    local humanoidRootPart = clonedCharacter:FindFirstChild("HumanoidRootPart")
+    if humanoidRootPart then
+        Camera.CFrame = CFrame.new(humanoidRootPart.Position + Vector3.new(0, 2, 5), humanoidRootPart.Position)
+        clonedCharacter.Parent = ViewportFrame -- Add the cloned character to the viewport
+    end
+
+    -- Return the ViewportFrame
+    return ViewportFrame
+end
+
 CreateElement("Button", function()
 	local Button = Create("TextButton", {
 		Text = "",
@@ -780,7 +812,20 @@ function OrionLib:MakeWindow(WindowConfig)
 		if GetIcon(TabConfig.Icon) ~= nil then
 			TabFrame.Ico.Image = GetIcon(TabConfig.Icon)
 		end	
-
+                if TabConfig.Name == "Moves" then
+                    local Container = AddThemeObject(SetChildren(SetProps(MakeElement("ScrollFrame", Color3.fromRGB(255, 255, 255), 5), {
+			Size = UDim2.new(1, -150, 1, -50),
+			Position = UDim2.new(0, 150, 0, 50),
+			Parent = MainWindow,
+			Visible = false,
+			Name = "VPlace"
+		}), {
+			MakeElement("List", 0, 6),
+			MakeElement("Padding", 15, 10, 10, 15)
+		}), "Divider")
+                    
+                else
+               
 		local Container = AddThemeObject(SetChildren(SetProps(MakeElement("ScrollFrame", Color3.fromRGB(255, 255, 255), 5), {
 			Size = UDim2.new(1, -150, 1, -50),
 			Position = UDim2.new(0, 150, 0, 50),
@@ -791,7 +836,7 @@ function OrionLib:MakeWindow(WindowConfig)
 			MakeElement("List", 0, 6),
 			MakeElement("Padding", 15, 10, 10, 15)
 		}), "Divider")
-
+                end
 		AddConnection(Container.UIListLayout:GetPropertyChangedSignal("AbsoluteContentSize"), function()
 			Container.CanvasSize = UDim2.new(0, 0, 0, Container.UIListLayout.AbsoluteContentSize.Y + 30)
 		end)
@@ -813,7 +858,7 @@ function OrionLib:MakeWindow(WindowConfig)
 				end    
 			end
 			for _, ItemContainer in next, MainWindow:GetChildren() do
-				if ItemContainer.Name == "ItemContainer" then
+				if ItemContainer.Name == "ItemContainer" or ItemContainer.Name == "VPlace" then
 					ItemContainer.Visible = false
 				end    
 			end  
