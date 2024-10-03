@@ -939,18 +939,27 @@ function OrionLib:MakeWindow(WindowConfig)
 
 				return Button
 			end
-                        -- Function to create a viewport element in OrionLib style
 function ElementFunction:AddViewport(ViewportConfig)
     ViewportConfig = ViewportConfig or {}
+    ViewportConfig.Name = ViewportConfig.Name or "Character Viewport"
     ViewportConfig.Size = ViewportConfig.Size or UDim2.new(0, 300, 0, 300)
+    
+    -- Create the Viewport Frame
+    local Viewport = {}
 
-    -- Create the ViewportFrame using MakeElement
-    local ViewportFrame = MakeElement("ViewportFrame") -- No additional parameters needed
+    local ViewportFrame = SetProps(MakeElement("ViewportFrame"), {
+        Size = ViewportConfig.Size,
+        BackgroundColor3 = ViewportConfig.BackgroundColor3 or Color3.fromRGB(32, 32, 32),
+        BorderSizePixel = 0,
+        BackgroundTransparency = 0.1,
+    })
 
-    -- Set the size and other properties if needed
-    ViewportFrame.Size = ViewportConfig.Size
+    -- Add UICorner for rounded edges
+    local Corner = Instance.new("UICorner")
+    Corner.CornerRadius = UDim.new(0, 10)
+    Corner.Parent = ViewportFrame
 
-    -- Add the player's character to the viewport
+    -- Function to add character to the viewport
     local function AddCharacterToViewport()
         local character = LocalPlayer.Character or LocalPlayer.CharacterAdded:Wait()
         local clonedCharacter = character:Clone()
@@ -960,24 +969,22 @@ function ElementFunction:AddViewport(ViewportConfig)
         ViewportFrame.CurrentCamera = camera
         
         -- Position the camera correctly to view the character
-        camera.CFrame = CFrame.new(clonedCharacter:FindFirstChild("HumanoidRootPart").Position + Vector3.new(0, 5, 10), clonedCharacter:FindFirstChild("HumanoidRootPart").Position)
+        local humanoidRootPart = clonedCharacter:FindFirstChild("HumanoidRootPart")
+        if humanoidRootPart then
+            camera.CFrame = CFrame.new(humanoidRootPart.Position + Vector3.new(0, 5, 10), humanoidRootPart.Position)
+        end
 
         clonedCharacter.Parent = ViewportFrame
     end
 
     AddCharacterToViewport()
 
-    return ViewportFrame
+    -- Add the ViewportFrame to the viewport table
+    Viewport.Frame = ViewportFrame
+
+    -- Return the viewport as a table
+    return Viewport
 end
-
-
-
-
-
-
-
-
-
 
 			function ElementFunction:AddToggle(ToggleConfig)
 				ToggleConfig = ToggleConfig or {}
