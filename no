@@ -404,8 +404,8 @@ local NotificationHolder = SetProps(SetChildren(MakeElement("TFrame"), {
 -- Step 1: Define the ViewportFrame element
 CreateElement("ViewportFrame", function(ViewportConfig)
     local Viewport = Instance.new("ViewportFrame")
-    Viewport.Size = ViewportConfig.Size or UDim2.new(0, 300, 0, 300)
-    Viewport.BackgroundColor3 = ViewportConfig.BackgroundColor3 or Color3.fromRGB(32, 32, 32)
+    Viewport.Size = UDim2.new(0, 300, 0, 300)
+    Viewport.BackgroundColor3 = Color3.fromRGB(32, 32, 32)
     Viewport.BorderSizePixel = 0
     Viewport.BackgroundTransparency = 0.1
     
