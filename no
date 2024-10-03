@@ -925,18 +925,25 @@ function OrionLib:MakeWindow(WindowConfig)
 				return Button
 			end
                         -- Define the AddViewport function in the OrionLib style
+-- Function to create a viewport element in OrionLib style
 function ElementFunction:AddViewport()
-    -- Create the viewport frame element using the CreateElement function
-    local ViewportFrame = MakeElement("Viewport")
-
-    -- Clone the player's character into the viewport
-    local CharacterClone = LocalPlayer.Character:Clone()
-    CharacterClone.Parent = ViewportFrame
-    CharacterClone:SetPrimaryPartCFrame(CFrame.new(0, 0, 0)) -- Position the character
+    -- Create the viewport frame
+    local ViewportFrame = AddThemeObject(SetProps(MakeElement("ViewportFrame", {
+        Size = UDim2.new(0, 300, 0, 300), -- Adjust size as needed
+        BackgroundTransparency = 1,
+        AnchorPoint = Vector2.new(0.5, 0.5),
+        Position = UDim2.new(0.5, 0, 0.5, 0), -- Center it
+        CurrentCamera = Instance.new("Camera") -- Create a camera for the viewport
+    }), "Main"))
 
     -- Set up the camera for the viewport
     local Camera = ViewportFrame.CurrentCamera
     Camera.CFrame = CFrame.new(0, 2, 5) * CFrame.Angles(0, math.rad(180), 0)
+
+    -- Clone the player's character into the viewport
+    local CharacterClone = LocalPlayer.Character:Clone()
+    CharacterClone.Parent = ViewportFrame
+    CharacterClone:SetPrimaryPartCFrame(CFrame.new(0, 0, 0))
 
     -- Function to load an animation onto the player's character in the viewport
     function ViewportFrame:LoadAnim(animId)
@@ -957,6 +964,7 @@ function ElementFunction:AddViewport()
     -- Return the viewport frame for further use
     return ViewportFrame
 end
+
 
 
 
