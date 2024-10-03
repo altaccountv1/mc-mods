@@ -933,11 +933,11 @@ function ElementFunction:AddViewport()
     local frame = MakeElement("Viewport")
     -- Clone the player's character into the viewport
     local CharacterClone = LocalPlayer.Character:Clone()
-    CharacterClone.Parent = ViewportFrame
+    CharacterClone.Parent =  frame
     CharacterClone:SetPrimaryPartCFrame(CFrame.new(0, 0, 0)) -- Position the character
 
     -- Set up the camera for the viewport
-    local Camera = ViewportFrame.CurrentCamera
+    local Camera = frame.CurrentCamera
     Camera.CFrame = CFrame.new(0, 2, 5) * CFrame.Angles(0, math.rad(180), 0)
 
     -- Define LoadAnim method for the viewport frame
