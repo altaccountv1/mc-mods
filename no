@@ -262,6 +262,20 @@ CreateElement("Corner", function(Scale, Offset)
 	return Corner
 end)
 
+CreateElement("Viewport", function()
+    -- Create the viewport frame
+    local ViewportFrame = Create("ViewportFrame", {
+        Size = UDim2.new(0, 300, 0, 300), -- Size of the viewport
+        BackgroundTransparency = 1,
+        AnchorPoint = Vector2.new(0.5, 0.5),
+        Position = UDim2.new(0.5, 0, 0.5, 0), -- Center it
+        CurrentCamera = Instance.new("Camera") -- Create a new camera for the viewport
+    })
+
+    -- Return the viewport frame
+    return ViewportFrame
+end)
+
 CreateElement("Stroke", function(Color, Thickness)
 	local Stroke = Create("UIStroke", {
 		Color = Color or Color3.fromRGB(255, 255, 255),
@@ -910,44 +924,40 @@ function OrionLib:MakeWindow(WindowConfig)
 
 				return Button
 			end
-                        function ElementFunction:AddViewport()
-    -- Create the viewport frame element in OrionLib style
-    local ViewportFrame = AddThemeObject(SetProps(MakeElement("ViewportFrame", {
-        Size = UDim2.new(0, 300, 0, 300),
-        BackgroundTransparency = 1,
-        AnchorPoint = Vector2.new(0.5, 0.5),
-        Position = UDim2.new(0.5, 0, 0.5, 0), -- Adjust as needed
-        CurrentCamera = Instance.new("Camera")
-    }), "Main"))
+                        -- Define the AddViewport function in the OrionLib style
+function ElementFunction:AddViewport()
+    -- Create the viewport frame element using the CreateElement function
+    local ViewportFrame = MakeElement("Viewport")
 
     -- Clone the player's character into the viewport
     local CharacterClone = LocalPlayer.Character:Clone()
     CharacterClone.Parent = ViewportFrame
-    CharacterClone:SetPrimaryPartCFrame(CFrame.new(0, 0, 0))
+    CharacterClone:SetPrimaryPartCFrame(CFrame.new(0, 0, 0)) -- Position the character
 
     -- Set up the camera for the viewport
     local Camera = ViewportFrame.CurrentCamera
     Camera.CFrame = CFrame.new(0, 2, 5) * CFrame.Angles(0, math.rad(180), 0)
 
     -- Function to load an animation onto the player's character in the viewport
-function ViewportFrame:LoadAnim(animId)
-    local Animation = Instance.new("Animation")
-    Animation.AnimationId = "rbxassetid://" .. animId
+    function ViewportFrame:LoadAnim(animId)
+        local Animation = Instance.new("Animation")
+        Animation.AnimationId = "rbxassetid://" .. animId
 
-    local Humanoid = LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
-    local Animator = Humanoid:FindFirstChildOfClass("Animator")
-    if not Animator then
-        Animator = Instance.new("Animator")
-        Animator.Parent = Humanoid
+        local Humanoid = LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+        local Animator = Humanoid:FindFirstChildOfClass("Animator")
+        if not Animator then
+            Animator = Instance.new("Animator")
+            Animator.Parent = Humanoid
+        end
+
+        local AnimationTrack = Animator:LoadAnimation(Animation)
+        AnimationTrack:Play()
     end
-
-    local AnimationTrack = Animator:LoadAnimation(Animation)
-    AnimationTrack:Play()
-end
 
     -- Return the viewport frame for further use
     return ViewportFrame
 end
+
 
 
 			function ElementFunction:AddToggle(ToggleConfig)
