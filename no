@@ -923,50 +923,59 @@ function OrionLib:MakeWindow(WindowConfig)
 
 				return Button
 			end
-                        -- Function to create a viewport element in OrionLib style
+                        -- Function to create a viewport element in OrionLib 
 -- Function to create a viewport element in OrionLib style
 function ElementFunction:AddViewport()
-    -- Create the viewport frame
-    local ViewportFrame = AddThemeObject(SetProps(MakeElement("Frame"), {
-        Size = UDim2.new(0, 300, 0, 300), -- Size of the viewport
+    -- Viewport configuration
+    local ViewportConfig = {
+        Name = "Character Viewport", -- Default name
+        Size = UDim2.new(0, 300, 0, 300), -- Default size
         BackgroundTransparency = 1,
-        AnchorPoint = Vector2.new(0.5, 0.5),
-        Position = UDim2.new(0.5, 0, 0.5, 0), -- Center it
+        Position = UDim2.new(0.5, -150, 0.5, -150) -- Centered position
+    }
+
+    -- Create the viewport frame
+    local Viewport = {Type = "Viewport", Config = ViewportConfig}
+
+    -- Create the actual ViewportFrame
+    Viewport.Frame = AddThemeObject(SetProps(MakeElement("Frame"), {
+        Size = ViewportConfig.Size,
+        BackgroundTransparency = ViewportConfig.BackgroundTransparency,
+        Position = ViewportConfig.Position,
+        Parent = ItemParent -- Adjust this as necessary
     }), "Main")
 
-    -- Create the viewport for the frame
-    local Viewport = Instance.new("ViewportFrame", ViewportFrame)
-    Viewport.Size = UDim2.new(1, 0, 1, 0)
-    Viewport.BackgroundTransparency = 1
-    Viewport.CurrentCamera = Instance.new("Camera")
+    -- Create the actual ViewportFrame for displaying
+    Viewport.ViewportFrame = Instance.new("ViewportFrame")
+    Viewport.ViewportFrame.Size = UDim2.new(1, 0, 1, 0)
+    Viewport.ViewportFrame.BackgroundTransparency = 1
+    Viewport.ViewportFrame.CurrentCamera = Instance.new("Camera")
+    Viewport.ViewportFrame.Parent = Viewport.Frame
 
     -- Clone the player's character into the viewport
     local CharacterClone = LocalPlayer.Character:Clone()
-    CharacterClone.Parent = Viewport
+    CharacterClone.Parent = Viewport.ViewportFrame
     CharacterClone:SetPrimaryPartCFrame(CFrame.new(0, 0, 0)) -- Position the character
 
     -- Set up the camera for the viewport
-    local Camera = Viewport.CurrentCamera
+    local Camera = Viewport.ViewportFrame.CurrentCamera
     Camera.CFrame = CFrame.new(0, 2, 5) * CFrame.Angles(0, math.rad(180), 0)
 
-    -- Define the LoadAnim method for the viewport frame
-    function ViewportFrame:LoadAnim(animId)
+    -- Method to load an animation onto the player's character in the viewport
+    function Viewport:LoadAnim(animId)
         local Animation = Instance.new("Animation")
         Animation.AnimationId = "rbxassetid://" .. animId
 
         local Humanoid = CharacterClone:FindFirstChildOfClass("Humanoid")
-        local Animator = Humanoid:FindFirstChildOfClass("Animator")
-        if not Animator then
-            Animator = Instance.new("Animator")
-            Animator.Parent = Humanoid
+        if Humanoid then
+            local Animator = Humanoid:FindFirstChildOfClass("Animator") or Instance.new("Animator", Humanoid)
+            local AnimationTrack = Animator:LoadAnimation(Animation)
+            AnimationTrack:Play()
         end
-
-        local AnimationTrack = Animator:LoadAnimation(Animation)
-        AnimationTrack:Play()
     end
 
-    -- Return the viewport frame for further use
-    return ViewportFrame
+    -- Return the viewport object with the frame and methods
+    return Viewport
 end
 
 
