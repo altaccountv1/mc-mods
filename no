@@ -940,14 +940,15 @@ function OrionLib:MakeWindow(WindowConfig)
 				return Button
 			end
                         -- Function to create a viewport element in OrionLib style
--- Step 2: Add the Viewport creation function to ElementFunction
 function ElementFunction:AddViewport(ViewportConfig)
     ViewportConfig = ViewportConfig or {}
-    ViewportConfig.Name = ViewportConfig.Name or "Character Viewport"
     ViewportConfig.Size = ViewportConfig.Size or UDim2.new(0, 300, 0, 300)
 
     -- Create the ViewportFrame using MakeElement
-    local ViewportFrame = MakeElement("ViewportFrame", ViewportConfig)
+    local ViewportFrame = MakeElement("ViewportFrame") -- No additional parameters needed
+
+    -- Set the size and other properties if needed
+    ViewportFrame.Size = ViewportConfig.Size
 
     -- Add the player's character to the viewport
     local function AddCharacterToViewport()
@@ -957,7 +958,9 @@ function ElementFunction:AddViewport(ViewportConfig)
         -- Set up a camera to focus on the character in the viewport
         local camera = Instance.new("Camera")
         ViewportFrame.CurrentCamera = camera
-        camera.CFrame = CFrame.new(clonedCharacter.Head.Position + Vector3.new(0, 2, 5), clonedCharacter.Head.Position)
+        
+        -- Position the camera correctly to view the character
+        camera.CFrame = CFrame.new(clonedCharacter:FindFirstChild("HumanoidRootPart").Position + Vector3.new(0, 5, 10), clonedCharacter:FindFirstChild("HumanoidRootPart").Position)
 
         clonedCharacter.Parent = ViewportFrame
     end
@@ -965,7 +968,6 @@ function ElementFunction:AddViewport(ViewportConfig)
     AddCharacterToViewport()
 
     return ViewportFrame
-
 end
 
 
