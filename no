@@ -923,29 +923,32 @@ function OrionLib:MakeWindow(WindowConfig)
 
 				return Button
 			end
-                        -- Create the viewport element in OrionLib style
-
--- Function to add a viewport to a tab in the Orion Library
+                        -- Function to create a viewport element in OrionLib style
 function ElementFunction:AddViewport()
-    -- Create the viewport frame using the CreateElement function
-    local vp = {}
+    -- Create the viewport frame
+    local ViewportFrame = AddThemeObject(SetProps(MakeElement("ViewportFrame"), {
+        Size = UDim2.new(0, 300, 0, 300), -- Set size of the viewport
+        BackgroundTransparency = 1,
+        AnchorPoint = Vector2.new(0.5, 0.5),
+        Position = UDim2.new(0.5, 0, 0.5, 0), -- Center the viewport
+        CurrentCamera = Instance.new("Camera") -- Create a camera for the viewport
+    }), "Main")
 
-    local frame = MakeElement("Viewport")
     -- Clone the player's character into the viewport
     local CharacterClone = LocalPlayer.Character:Clone()
-    CharacterClone.Parent =  frame
+    CharacterClone.Parent = ViewportFrame
     CharacterClone:SetPrimaryPartCFrame(CFrame.new(0, 0, 0)) -- Position the character
 
     -- Set up the camera for the viewport
-    local Camera = frame.CurrentCamera
+    local Camera = ViewportFrame.CurrentCamera
     Camera.CFrame = CFrame.new(0, 2, 5) * CFrame.Angles(0, math.rad(180), 0)
 
-    -- Define LoadAnim method for the viewport frame
-    function vp:LoadAnim(animId)
+    -- Method to load an animation onto the player's character in the viewport
+    function ViewportFrame:LoadAnim(animId)
         local Animation = Instance.new("Animation")
         Animation.AnimationId = "rbxassetid://" .. animId
 
-        local Humanoid = LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
+        local Humanoid = CharacterClone:FindFirstChildOfClass("Humanoid")
         local Animator = Humanoid:FindFirstChildOfClass("Animator")
         if not Animator then
             Animator = Instance.new("Animator")
@@ -957,8 +960,9 @@ function ElementFunction:AddViewport()
     end
 
     -- Return the viewport frame for further use
-    return vp
+    return ViewportFrame
 end
+
 
 
 
