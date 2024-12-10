@@ -65,12 +65,7 @@ for _, Interface in ipairs(game.CoreGui:GetChildren()) do
 end
 
 function OrionLib:IsRunning()
-	if gethui then
-		return Orion.Parent == gethui()
-	else
-		return Orion.Parent == game:GetService("CoreGui")
-	end
-
+	return Orion.Parent == game:GetService("CoreGui")
 end
 
 local function AddConnection(Signal, Function)
